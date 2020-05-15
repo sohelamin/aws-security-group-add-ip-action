@@ -12,7 +12,7 @@ async function run() {
       .getInput('aws-security-group-id', { required: true })
       .split(',')
       .map(item => item.trim());
-    const port = core.getInput('port', { required: false });
+    const port = parseInt(core.getInput('port', { required: false }));
     const description = core.getInput('description', { required: false });
 
     AWS.config.update({
@@ -43,21 +43,23 @@ async function run() {
             ToPort: port,
           }).promise();
         }
-
-        const myPublicIp = await publicIp.v4();
-        await ec2.authorizeSecurityGroupIngress({
-          GroupId: group.GroupId,
-          IpPermissions: [{
-            IpProtocol: 'tcp', 
-            FromPort: port, 
-            ToPort: port,
-            IpRanges: [{
-              CidrIp: `${myPublicIp}/32`, 
-              Description: description,
-            }], 
-          }] 
-        }).promise();
       }
+
+      const myPublicIp = await publicIp.v4();
+      await ec2.authorizeSecurityGroupIngress({
+        GroupId: group.GroupId,
+        IpPermissions: [{
+          IpProtocol: 'tcp', 
+          FromPort: port, 
+          ToPort: port,
+          IpRanges: [{
+            CidrIp: `${myPublicIp}/32`, 
+            Description: description,
+          }], 
+        }] 
+      }).promise();
+
+      console.log(`The IP ${myPublicIp} is added`);
     }
 
   } catch (error) {
