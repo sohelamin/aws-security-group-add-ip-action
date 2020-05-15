@@ -31,7 +31,8 @@ The descriptipn of your IP permission. Default `"GitHub Action"`.
 
 ## Example usage
 ```
-uses: actions/aws-security-group-add-ip@master
+- name: Add public IP to AWS security group
+uses: sohelamin/aws-security-group-add-ip@v1
 with:
   aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
   aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
