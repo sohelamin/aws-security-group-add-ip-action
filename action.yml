@@ -27,4 +27,4 @@ inputs:
     default: 'GitHub Action'
 runs:
   using: 'node12'
-  main: 'dis/index.js'
+  main: 'dist/index.js'
