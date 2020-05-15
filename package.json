@@ -1,0 +1,23 @@
+{
+  "name": "aws-security-group-add-ip",
+  "version": "1.0.0",
+  "description": "Add IP address to your AWS security group",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "ncc build index.js -m -o dist"
+  },
+  "keywords": [
+    "aws",
+    "security group",
+    "ip",
+    "white list"
+  ],
+  "author": "sohelamin",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "aws-sdk": "^2.670.0",
+    "public-ip": "^4.0.1"
+  }
+}

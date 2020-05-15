@@ -1,0 +1,30 @@
+name: 'AWS Security Group Add IP'
+description: 'Add IP address to your AWS security group'
+author: 'Sohel Amin'
+branding:
+  icon: 'lock'
+  color: 'red'
+inputs:
+  aws-access-key-id:
+    description: 'AWS Access Key ID'
+    required: true
+  aws-secret-access-key:
+    description: 'AWS Secret Access Key'
+    required: true
+  aws-region:
+    description: 'AWS Region'
+    required: true
+  aws-security-group-id:
+    description: 'AWS Security Group'
+    required: true
+  port:
+    description: 'The port which you want to allow'
+    required: false
+    default: '22'
+  description:
+    description: 'The descriptipn of your IP permission'
+    required: false
+    default: 'GitHub Action'
+runs:
+  using: 'node12'
+  main: 'dis/index.js'
