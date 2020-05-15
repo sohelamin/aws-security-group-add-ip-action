@@ -30,7 +30,7 @@ The port which you want to allow. Default `"22"`.
 The descriptipn of your IP permission. Default `"GitHub Action"`.
 
 ## Example usage
-
+```
 uses: actions/aws-security-group-add-ip@master
 with:
   aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -39,3 +39,4 @@ with:
   aws-security-group-id: ${{ secrets.AWS_SECURITY_GROUP_ID }}
   port: '22'
   description: 'GitHub Action'
+```
