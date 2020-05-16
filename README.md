@@ -1,7 +1,7 @@
-# AWS Security Group Add IP action
+# AWS Security Group Add IP Action
 
 This action will add your public ip address to your given aws security group(s) with a description.
-If any ip address already exists with the description then it will update the address.
+If any ip address already exists with the description then it will update the address instead of adding.
 
 ## Inputs
 
