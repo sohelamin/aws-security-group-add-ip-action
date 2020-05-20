@@ -27,4 +27,5 @@ inputs:
     default: 'GitHub Action'
 runs:
   using: 'node12'
-  main: 'dist/index.js'
+  main: 'dist/main/index.js'
+  post: 'dist/cleanup/index.js'

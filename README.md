@@ -2,6 +2,7 @@
 
 This action will add your public ip address to your given aws security group(s) with a description.
 If any ip address already exists with the description then it will update the address instead of adding.
+And it will remove the added ip address once the main job is completed.
 
 ## Inputs
 
