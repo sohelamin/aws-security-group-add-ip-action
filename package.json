@@ -16,7 +16,7 @@
   "author": "sohelamin",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.4",
+    "@actions/core": "^1.2.6",
     "aws-sdk": "^2.670.0",
     "public-ip": "^4.0.1"
   },
