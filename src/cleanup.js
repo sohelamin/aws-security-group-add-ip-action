@@ -10,9 +10,9 @@ async function run() {
       await config.ec2.revokeSecurityGroupIngress({
         GroupId: groupId,
         CidrIp: `${myPublicIp}/32`,
-        IpProtocol: 'tcp',
+        IpProtocol: config.protocol,
         FromPort: config.port,
-        ToPort: config.port,
+        ToPort: config.toPort !== false ? config.toPort : config.port,
       }).promise();
     }
 
