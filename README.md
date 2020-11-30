@@ -22,9 +22,17 @@ And it will remove the added ip address once the main job is completed.
 
 **Required** AWS Security Group (comma separated if multiple).
 
+### `protocol`
+
+The protocol which you want to allow. Default `"tcp"`.
+
 ### `port`
 
 The port which you want to allow. Default `"22"`.
+
+### `to-port`
+
+The to port which you want to allow. Default `""`, leave it empty to allow only one port.
 
 ### `description`
 
@@ -40,5 +48,7 @@ The descriptipn of your IP permission. Default `"GitHub Action"`.
     aws-region: 'us-east-1'
     aws-security-group-id: ${{ secrets.AWS_SECURITY_GROUP_ID }}
     port: '22'
+    to-port: '30'
+    protocol: 'tcp'
     description: 'GitHub Action'
 ```
