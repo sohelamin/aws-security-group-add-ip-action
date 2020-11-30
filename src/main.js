@@ -11,19 +11,27 @@ async function run() {
 
     for (const group of result.SecurityGroups) {
       const ruleByPort = group.IpPermissions
-        .find(permission => permission.FromPort === config.port);
-      
+        .find(permission => {
+            if ( config.toPort !== false ) {
+                return permission.FromPort === config.port
+                    && permission.ToPort === config.toPort
+                    && permission.IpProtocol === config.protocol;
+            }
+
+            return permission.FromPort === config.port && permission.IpProtocol === config.protocol;
+        });
+
       if (ruleByPort) {
         const ipByDesc = ruleByPort.IpRanges
           .find(ip => ip.Description === config.description);
 
-        if (ipByDesc) {    
+        if (ipByDesc) {
           await config.ec2.revokeSecurityGroupIngress({
             GroupId: group.GroupId,
             CidrIp: ipByDesc.CidrIp,
-            IpProtocol: 'tcp',
+            IpProtocol: config.protocol,
             FromPort: config.port,
-            ToPort: config.port,
+            ToPort: config.toPort !== false ? config.toPort : config.port,
           }).promise();
         }
       }
@@ -32,13 +40,13 @@ async function run() {
       await config.ec2.authorizeSecurityGroupIngress({
         GroupId: group.GroupId,
         IpPermissions: [{
-          IpProtocol: 'tcp', 
-          FromPort: config.port, 
-          ToPort: config.port,
+          IpProtocol: config.protocol,
+          FromPort: config.port,
+          ToPort: config.toPort !== false ? config.toPort : config.port,
           IpRanges: [{
-            CidrIp: `${myPublicIp}/32`, 
+            CidrIp: `${myPublicIp}/32`,
             Description: config.description,
-          }], 
+          }],
         }] 
       }).promise();
 

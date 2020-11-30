@@ -10,7 +10,12 @@ const groupIds = core
   .split(',')
   .map(item => item.trim());
 const port = parseInt(core.getInput('port', { required: false }));
+
+const toPortInput = core.getInput('to-port', { required: false });
+const toPort = toPortInput.length > 0 ? parseInt(toPortInput) : false;
+
 const description = core.getInput('description', { required: false });
+const protocol = core.getInput('protocol', { required: false });
 
 AWS.config.update({
   region,
@@ -25,6 +30,8 @@ module.exports = {
   secretAccessKey,
   groupIds,
   port,
+  toPort,
+  protocol,
   description,
   ec2,
 };
