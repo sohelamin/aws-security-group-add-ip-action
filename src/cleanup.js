@@ -1,3 +1,4 @@
+const core = require('@actions/core');
 const publicIp = require('public-ip');
 
 const config = require('./config');
