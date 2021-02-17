@@ -30,6 +30,33 @@ The port which you want to allow. Default `"22"`.
 
 The descriptipn of your IP permission. Default `"GitHub Action"`.
 
+## AWS IAM Policy
+
+Make sure the IAM user that you have configured has the following policy
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "UpdateIngress",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:RevokeSecurityGroupIngress",
+                "ec2:AuthorizeSecurityGroupIngress"
+            ],
+            "Resource": "arn:aws:ec2:your-region:your-account-id:security-group/your-security-group-id"
+        },
+        {
+            "Sid": "DescribeGroups",
+            "Effect": "Allow",
+            "Action": "ec2:DescribeSecurityGroups",
+            "Resource": "*"
+        }
+    ]
+}
+```
+Replace `your-region`, `your-account-id` and `your-security-group-id` with appropiate values.
+
 ## Example usage
 ```yaml
 - name: Add public IP to AWS security group
