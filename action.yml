@@ -21,6 +21,14 @@ inputs:
     description: 'The port which you want to allow'
     required: false
     default: '22'
+  to-port:
+    description: 'The to port which you want to allow (Leave it as blank to ignore)'
+    required: false
+    default: ''
+  protocol:
+    description: 'Protocol for the rule'
+    required: false
+    default: 'tcp'
   description:
     description: 'The descriptipn of your IP permission'
     required: false
