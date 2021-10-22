@@ -11,6 +11,9 @@ inputs:
   aws-secret-access-key:
     description: 'AWS Secret Access Key'
     required: true
+  aws-secret-session-token:
+    description: 'AWS Session Token'
+    required: false
   aws-region:
     description: 'AWS Region'
     required: true

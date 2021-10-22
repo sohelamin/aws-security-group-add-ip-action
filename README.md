@@ -14,6 +14,10 @@ And it will remove the added ip address once the main job is completed.
 
 **Required** AWS Secret Access Key.
 
+### `aws-secret-session-token`
+
+**Optional** AWS Secret Session token.
+
 ### `aws-region`
 
 **Required** AWS Region.
