@@ -34,6 +34,6 @@ inputs:
     required: false
     default: 'GitHub Action'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/main/index.js'
   post: 'dist/cleanup/index.js'
